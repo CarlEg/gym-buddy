@@ -1,0 +1,36 @@
+.BottomButtons{
+  color: white;
+  background-color: #8C030E;
+  width: 100%;
+  margin: auto;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
+}
+
+.BottomButtons button{
+  background-color:  #8C030E;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.divider{
+  width:75px;
+  height:auto;
+  display:inline-block;
+}
+
+.BottomButtons  img{
+  height:40px;
+  width:40px;
+}
+
+.BottomButtons button.salmon{
+  background-color: #F25050;
+}
+
+.BottomButtons button:hover{
+  background-color: #F25050;
+}
