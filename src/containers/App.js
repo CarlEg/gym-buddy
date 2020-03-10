@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
-import Header from '../components/header/header'
-import BottomButtons from '../components/Footer/BottomButtons'
+import Header from '../components/header/header';
+import BottomButtons from '../components/Footer/BottomButtons';
+import Time from '../components/Time/Time'
+
+
 
 class App extends Component {
 
@@ -9,6 +12,8 @@ class App extends Component {
     homeSelected: true,
     muscleSelected: false,
     messageSelected: false,
+    selectedDate: Date.now(),
+    
   }
 
   homeSelected = () =>{
@@ -47,15 +52,27 @@ class App extends Component {
     }
   }
 
+  handleDateChange = date =>{
+    this.setState({
+      selectedDate:date,
+    });
+  }
+
   componentDidMount() {
     document.body.style.backgroundColor =  'rgb(252, 217, 204)';
 }
 
   render(){
+    console.log(this.state.selectedDate)
     return (
       <div className={classes.app}>
         <div className={classes.background}>
        <Header/>
+       <Time 
+       value={this.state.selectedDate}
+       whenChange={this.handleDateChange}
+       />
+       <button>Choose muscles</button>
        <BottomButtons homeTrue={this.state.homeSelected}
        muscleTrue={this.state.muscleSelected} 
        messageTrue={this.state.messageSelected}
