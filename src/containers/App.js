@@ -59,20 +59,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.body.style.backgroundColor =  'rgb(252, 217, 204)';
+    document.body.style.backgroundColor =  '#F7F5EF';
 }
 
   render(){
     console.log(this.state.selectedDate)
     return (
       <div className={classes.app}>
-        <div className={classes.background}>
        <Header/>
        <Time 
        value={this.state.selectedDate}
        whenChange={this.handleDateChange}
        />
-       <button>Choose muscles</button>
+       <button className={classes.muscleButton}>Choose <br/> Muscles</button>
        <BottomButtons homeTrue={this.state.homeSelected}
        muscleTrue={this.state.muscleSelected} 
        messageTrue={this.state.messageSelected}
@@ -80,7 +79,6 @@ class App extends Component {
        musclePressed={this.muscleSelected}
        messagePressed={this.messageSelected}
        />
-       </div>
       </div>
     );
   }

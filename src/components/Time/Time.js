@@ -1,10 +1,9 @@
 import React from 'react';
 import 'date-fns'
-import {KeyboardTimePicker,
-MuiPickersUtilsProvider} from '@material-ui/pickers';
+import {KeyboardTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
-import classes from './Time.modules.css'
+import {createMuiTheme, ThemeProvider, withStyles} from '@material-ui/core/styles';
+import clsx from 'clsx'
 
 const theme = createMuiTheme({
     palette:{
@@ -14,14 +13,27 @@ const theme = createMuiTheme({
     }
 })
 
+const styles = {
+    root: {
+        background: '#8C030E',
+        color: 'white',
+        position: 'relative',
+        top:'-15px'
+    },
+    MuiInput:{
+        color: 'white',
+    }
+}
+
 const Time = (props) =>{
+    const {classes, className, ...other} = props;
     return(
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <ThemeProvider theme={theme}>
-                <div className={classes}>
+                <div>
                 <p>Choose time for workout:</p>
                 <KeyboardTimePicker
-                    className={classes.TimePicker}
+                    className={clsx(classes.root, classes.MuiInput)} {...other}
                     margin="normal"
                     id="time-picker"
                     label="Time picker"
@@ -39,4 +51,4 @@ const Time = (props) =>{
 }
 
 
-export default (Time);
+export default withStyles(styles)(Time);
