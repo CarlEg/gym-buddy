@@ -1,0 +1,9 @@
+.Person{
+    text-align: center;
+}
+
+.Person img{
+    position: relative;
+    top: 20px;
+    height:400px;
+}
