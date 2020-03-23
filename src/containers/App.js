@@ -10,21 +10,24 @@ import Muscles from '../components/Muscles/Muscles'
 class App extends Component {
 
   state = {
-    homeSelected: true,
-    muscleSelected: false,
+    homeSelected: false,
+    muscleSelected: true,
     messageSelected: false,
     selectedDate: Date.now(),
-    chest: false,
-    abs:false,
-    legs: false,
-    biceps:false,
-    lats:false,
-    muscles:[
-      this.chest,
-      this.abs,
-      this.legs,
-      this.biceps,
-      this.lats,]
+    back: false,
+    // chest: false,
+    // abs:false,
+    // legs: false,
+    // biceps:false,
+    // lats:false,
+    muscles:{
+      chest: false,
+      abs: false,
+      legs: false,
+      biceps: false,
+      lats: false,},
+    selected:[],
+    arrayIsEmpty:true,
     
   }
 
@@ -74,10 +77,146 @@ class App extends Component {
     document.body.style.backgroundColor =  '#F7F5EF';
 }
 
+  chestSelected = () =>{
+    let array = this.state.selected
+    this.setState({
+      muscles:{
+        chest:!this.state.muscles.chest,
+        abs: this.state.muscles.abs,
+        legs: this.state.muscles.legs,
+        biceps: this.state.muscles.biceps,
+        lats: this.state.muscles.lats,
+      }
+    })
+    if(!this.state.muscles.chest){
+      array.push("Chest")
+      this.setState({
+        selected: array
+      })
+    }else{
+      const target = array.indexOf("Chest")
+      array.splice(target,1)
+    }
+    this.checkSelected()
+  }
+
+  absSelected = () =>{
+    let array = this.state.selected
+    this.setState({
+      muscles:{
+        chest:this.state.muscles.chest,
+        abs: !this.state.muscles.abs,
+        legs: this.state.muscles.legs,
+        biceps: this.state.muscles.biceps,
+        lats: this.state.muscles.lats,
+      }
+    })
+    if(!this.state.muscles.abs){
+      array.push("Abs")
+      this.setState({
+        selected: array
+      })
+    }else{
+      const target = array.indexOf("Abs")
+      array.splice(target,1)
+    }
+  }
+
+  legsSelected = () =>{
+    let array = this.state.selected
+    this.setState({
+      muscles:{
+        chest:this.state.muscles.chest,
+        abs: this.state.muscles.abs,
+        legs: !this.state.muscles.legs,
+        biceps: this.state.muscles.biceps,
+        lats: this.state.muscles.lats,
+      }
+    })
+    if(!this.state.muscles.legs){
+      array.push("Legs")
+      this.setState({
+        selected: array
+      })
+    }else{
+      const target = array.indexOf("Legs")
+      array.splice(target,1)
+    }
+  }
+
+  bicepsSelected = () =>{
+    let array = this.state.selected;
+    this.setState({
+      muscles:{
+        chest: this.state.muscles.chest,
+        abs: this.state.muscles.abs,
+        legs: this.state.muscles.legs,
+        biceps: !this.state.muscles.biceps,
+        lats: this.state.muscles.lats,
+      }
+    });
+    if(!this.state.muscles.biceps){
+      array.push("Biceps")
+      this.setState({
+        selected: array
+      })
+    }else{
+      const target = array.indexOf("Biceps")
+      array.splice(target,1)
+    }
+  }
+
+  latsSelected = () =>{
+    let array = this.state.selected;
+    this.setState({
+      muscles:{
+        chest: this.state.muscles.chest,
+        abs: this.state.muscles.abs,
+        legs: this.state.muscles.legs,
+        biceps: this.state.muscles.biceps,
+        lats: !this.state.muscles.lats,
+      }
+    });
+    if(!this.state.muscles.lats){
+      array.push("Lats");
+      this.setState({
+        selected: array
+      });
+    }else{
+      const target = array.indexOf("Lats");
+      array.splice(target,1);
+    }
+  }
+
+  backSelected = () =>{
+    this.setState({
+      back: true,
+    })
+  }
+
+  frontSelected = () =>{
+    this.setState({
+      back:false,
+    })
+  }
+
+  checkSelected = () =>{
+    if(this.state.selected.length>0){
+      this.setState({
+        arrayIsEmpty:false,
+      });
+    }else{
+      this.setState({
+        arrayIsEmpty:true,
+      });
+    }
+  }
+
   render(){
-    console.log(this.state.selectedDate)
-    if(this.state.homeSelected){
-      return (
+    let screen = null
+
+    if(this.state.homeSelected){  //If home is selected screen is home
+      screen=(
         <div className={classes.app}>
 
          <Header/>
@@ -98,15 +237,23 @@ class App extends Component {
          />
 
         </div>
-      );
-    }
-    if(this.state.muscleSelected){
-      return(
+      );}
+    if(this.state.muscleSelected){  //if muscle is selected screen is muscle
+      screen=(
         <div className={classes.app}>
+         <Header muscleScreen={this.state.muscleSelected} goHome={this.homeSelected} />
 
-         <Header/>
-
-         <Muscles muscles={this.state.muscles} />
+         <Muscles muscles={this.state.muscles} 
+         chestSelect={this.chestSelected} 
+         absSelect={this.absSelected}
+         legsSelect={this.legsSelected}
+         bicepsSelect={this.bicepsSelected}
+         latsSelect={this.latsSelected} 
+         backSelect={this.backSelected} 
+         back ={this.state.back} 
+         frontSelect={this.frontSelected} 
+         selected={this.state.selected} 
+         checkEmpty={this.state.arrayIsEmpty} />
 
          <BottomButtons homeTrue={this.state.homeSelected}
          muscleTrue={this.state.muscleSelected} 
@@ -119,6 +266,7 @@ class App extends Component {
         </div>
       )
     }
+    return screen
   }
 }
 

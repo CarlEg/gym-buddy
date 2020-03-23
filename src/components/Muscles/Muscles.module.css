@@ -7,3 +7,155 @@
     top: 20px;
     height:400px;
 }
+
+.chest{
+    cursor: pointer;
+    position: absolute;
+    left: 5.8cm;
+    top: 3.5cm;
+    height:25px;
+    width:60px;
+    opacity: 0;
+    border-radius: 9px;
+}
+
+.abs{
+    cursor: pointer;
+    position: absolute;
+    top: 4.3cm;
+    left: 6.2cm;
+    height: 44px;
+    width:33px;
+    border-radius: 7px;
+    opacity: 0;
+}
+
+.legsL{
+    cursor: pointer;
+    position: absolute;
+    top: 6.2cm;
+    left: 5.75cm;
+    height: 90px;
+    width:33px;
+    border-radius: 50px;
+    opacity: 0;
+    transform: rotate(-5deg)
+}
+
+.legsR{
+    cursor: pointer;
+    position: absolute;
+    top: 6.2cm;
+    right: 5.75cm;
+    height: 90px;
+    width:33px;
+    border-radius: 50px;
+    opacity: 0;
+    transform: rotate(5deg)
+}
+
+.bicepsL{
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    height:40px;
+    top: 4cm;
+    left: 5.15cm;
+    transform: rotate(8deg);
+    opacity: 0;
+}
+
+.bicepsR{
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    height:40px;
+    top: 4cm;
+    right: 5.15cm;
+    transform: rotate(-8deg);
+    opacity: 0;
+}
+
+.back{
+    background-color: #8C030E;
+  border: 4px solid #6F6F6F;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+  color: white;
+  cursor: pointer;
+  height: 50px;
+  width: 125px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 18px;
+  position: absolute;
+  top: 50px;
+  right: 50px
+}
+
+.back:hover{
+    background-color: #F25050;
+    color:black;
+}
+
+.front{
+    background-color: #8C030E;
+  border: 4px solid #6F6F6F;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+  color: white;
+  cursor: pointer;
+  height: 50px;
+  width: 125px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 17px;
+  position: absolute;
+  top: 50px;
+  left: 50px
+}
+
+.front:hover{
+    background-color: #F25050;
+    color:black;
+}
+
+.frontCLicked{
+    background-color: #F25050
+}
+
+
+.latsR{
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 3.7cm;
+    right: 5.7cm;
+    height: 52px;
+    width:20px;
+    opacity: 0;
+}
+
+.latsL{
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 3.7cm;
+    left: 5.7cm;
+    height: 52px;
+    width:20px;
+    opacity: 0;
+}
+
+.Person p{
+    background-color: #8C030E;
+  border: 4px solid #6F6F6F;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+  color: white;
+  height: inherit;
+  width: 55px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 17px;
+  position: absolute;
+  margin: auto;
+  top:20px
+}

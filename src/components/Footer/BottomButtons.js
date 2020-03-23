@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './BottomButtons.module.css'
-import homeIcon from '../../images/home.png'
-import homeBlack from '../../images/homeBlack.png'
-import muscleIcon from '../../images/muscleWhite.png'
-import muscleBlack from '../../images/muscle.png'
-import messageIcon from '../../images/messageWhite.png'
-import messageBlack from '../../images/messageFilled.png'
+import homeIcon from '../../images/navigation/home.png'
+import homeBlack from '../../images/navigation/homeBlack.png'
+import muscleIcon from '../../images/navigation/muscleWhite.png'
+import muscleBlack from '../../images/navigation/muscle.png'
+import messageIcon from '../../images/navigation/messageWhite.png'
+import messageBlack from '../../images/navigation/messageFilled.png'
 
 const Footer = (props) =>{
 
