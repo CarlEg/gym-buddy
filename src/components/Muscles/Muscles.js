@@ -29,7 +29,7 @@ const Muscles = props =>{
     const selectedMuscles = props.muscles;
     let image = personFront;
     let screen = null;
-    let array = props.selected.join(" ")
+    const array = props.selected.join(" ")
 
     switch (true) {
         case props.back:
@@ -145,13 +145,19 @@ const Muscles = props =>{
 
     return(
         <div className={classes.Person}>
-            <button className={classes.front} onClick={props.frontSelect}>Front Muscles</button>
-            <button className={classes.back} onClick={props.backSelect}>Back Muscles</button>
+            <button className={props.back ? classes.front : classes.frontClicked} 
+            onClick={props.frontSelect}>Front Muscles</button>
+
+            <button className={props.back ? classes.backClicked : classes.back} 
+            onClick={props.backSelect}>Back Muscles</button>
+            {props.checkEmpty ? null: <p>{array}</p>}
             <img
             src={image} 
             alt="Front facing person muscles" />
-            {props.checkEmpty ? null: <p>{array}</p>}
-        {screen}
+            {screen}
+            {<button className={props.checkEmpty ? classes.presetGrey: classes.preset} 
+            onClick={props.savePreset} >
+            Save Muscles</button>}
         </div>
         )
 }
