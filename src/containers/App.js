@@ -4,14 +4,15 @@ import Header from '../components/header/header';
 import BottomButtons from '../components/Footer/BottomButtons';
 import Time from '../components/Time/Time'
 import Muscles from '../components/Muscles/Muscles'
+import PresetButton from '../components/PresetButton/PresetButton';
 
 
 
 class App extends Component {
 
   state = {
-    homeSelected: false,
-    muscleSelected: true,
+    homeSelected: true,
+    muscleSelected: false,
     messageSelected: false,
     selectedDate: Date.now(),
     back: false,
@@ -28,7 +29,8 @@ class App extends Component {
       lats: false,},
     selected:[],
     arrayIsEmpty:true,
-    presets:["Chest"]
+    isPresetEmpty:true,
+    presets:[]
   }
 
   homeSelected = () =>{
@@ -223,23 +225,99 @@ class App extends Component {
 
   checkElement = () =>{
     const array = this.state.presets
-    console.log(array)
     let i;
     for(i=0; i<=array.length; i++){
-      console.log(i)
       if(array[i] === undefined){
         return i
       }
     }
   }
 
-  savePreset = (preset) =>{
-    const index = this.checkElement()
-    console.log(index)
+  
+
+  savePreset = () =>{
+    const muscles = this.state.muscles
+    let preset = [];
+    if(muscles.abs){
+      preset.push("Abs")
+    }
+    if(muscles.biceps){
+      preset.push("Biceps")
+    }
+    if(muscles.chest){
+      preset.push("Chest")
+    }
+    if(muscles.lats){
+      preset.push("Lats")
+    }
+    if(muscles.legs){
+      preset.push("Legs")
+    }
+    let array = this.state.presets;
+    let i;
+    let flag = false;
+    if(this.state.isPresetEmpty){
+      array.push(preset)
+      this.setState({
+        presets: array
+      });
+      this.setState({isPresetEmpty:false})
+    }else {
+      for(i=0; flag===false && i<array.length; i++){
+        if(JSON.stringify(array[i])===JSON.stringify(preset)){
+          flag = true;
+        }
+       }
+       if(!flag){
+        array.push(preset)
+        this.setState({
+          presets: array
+        });
+      } 
+    }
+    
+  }
+
+  presetClicked = (index) =>{
+    let i;
+    const array = this.state.presets[index]
+    let muscles = this.state.muscles
+    let chosen =[];
+    muscles.abs =false;
+    muscles.biceps=false
+    muscles.chest = false
+    muscles.legs = false
+    muscles.lats = false
+    for(i=0; i<array.length; i++){
+      if(array[i]==="Abs"){
+        muscles.abs = true;
+        chosen.push("Abs");
+      }else if(array[i]==="Biceps"){
+        muscles.biceps = true;
+        chosen.push("Biceps");
+      }else if(array[i]==="Chest"){
+        muscles.chest = true;
+        chosen.push("Chest")
+      }else if(array[i]==="Legs"){
+        muscles.legs = true;
+        chosen.push("Legs")
+      }else if(array[i]==="Lats"){
+        muscles.lats = true;
+        chosen.push("Lats")
+      }
+    }
+    this.setState({
+      muscles:muscles,
+      homeSelected: false,
+      muscleSelected: true,
+      messageSelected: false,
+      selected:chosen,
+    })
   }
 
   render(){
     let screen = null
+    console.log(this.state.selectedDate)
     if(this.state.homeSelected){  //If home is selected screen is home
       screen=(
         <div className={classes.app}>
@@ -252,6 +330,11 @@ class App extends Component {
          />
 
          <button onClick={this.muscleSelected} className={classes.muscleButton}>Choose <br/> Muscles</button>
+         <br></br>
+         <br></br>
+         <PresetButton presets={this.state.presets}
+         isPresetEmpty={this.state.isPresetEmpty}
+         clicked={this.presetClicked}/>
 
          <BottomButtons homeTrue={this.state.homeSelected}
          muscleTrue={this.state.muscleSelected} 
@@ -289,6 +372,21 @@ class App extends Component {
          messagePressed={this.messageSelected}
          />
 
+        </div>
+      )
+    }
+    if(this.state.messageSelected){
+      screen=(
+      <div className={classes.app}>
+      <Header muscleScreen={this.state.muscleSelected} goHome={this.homeSelected} />
+
+      <BottomButtons homeTrue={this.state.homeSelected}
+         muscleTrue={this.state.muscleSelected} 
+         messageTrue={this.state.messageSelected}
+         homePressed={this.homeSelected}
+         musclePressed={this.muscleSelected}
+         messagePressed={this.messageSelected}
+         />
         </div>
       )
     }
