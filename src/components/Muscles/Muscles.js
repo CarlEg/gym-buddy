@@ -155,8 +155,11 @@ const Muscles = props =>{
             alt="Front facing person muscles" />
             {screen}
             {<button className={props.checkEmpty ? classes.presetGrey: classes.preset} 
-            onClick={props.savePreset} >
+            onClick={props.checkEmpty ? null : props.savePreset} >
             Save Muscles</button>}
+            {<button className={props.checkEmpty ? classes.findGrey: classes.find} 
+            onClick={props.checkEmpty ? null : props.findClicked} >
+            Find buddy</button>}
         </div>
         )
 }

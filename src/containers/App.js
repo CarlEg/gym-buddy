@@ -5,6 +5,7 @@ import BottomButtons from '../components/Footer/BottomButtons';
 import Time from '../components/Time/Time'
 import Muscles from '../components/Muscles/Muscles'
 import PresetButton from '../components/PresetButton/PresetButton';
+import Buddies from '../components/Buddies/Buddies'
 
 
 
@@ -30,7 +31,7 @@ class App extends Component {
     selected:[],
     arrayIsEmpty:true,
     isPresetEmpty:true,
-    presets:[]
+    presets:[],
   }
 
   homeSelected = () =>{
@@ -288,6 +289,7 @@ class App extends Component {
     muscles.chest = false
     muscles.legs = false
     muscles.lats = false
+    console.log(this.state.selected)
     for(i=0; i<array.length; i++){
       if(array[i]==="Abs"){
         muscles.abs = true;
@@ -315,9 +317,14 @@ class App extends Component {
     })
   }
 
+  findClicked = () =>{
+    this.setState({
+      messageSelected:true,
+    })
+  }
+
   render(){
     let screen = null
-    console.log(this.state.selectedDate)
     if(this.state.homeSelected){  //If home is selected screen is home
       screen=(
         <div className={classes.app}>
@@ -362,7 +369,8 @@ class App extends Component {
          frontSelect={this.frontSelected} 
          selected={this.state.selected} 
          checkEmpty={this.state.arrayIsEmpty}
-         savePreset={this.savePreset} />
+         savePreset={this.savePreset} 
+         findClicked={this.findClicked}/>
 
          <BottomButtons homeTrue={this.state.homeSelected}
          muscleTrue={this.state.muscleSelected} 
@@ -379,6 +387,8 @@ class App extends Component {
       screen=(
       <div className={classes.app}>
       <Header muscleScreen={this.state.muscleSelected} goHome={this.homeSelected} />
+
+        <Buddies selected={this.state.selected}/>
 
       <BottomButtons homeTrue={this.state.homeSelected}
          muscleTrue={this.state.muscleSelected} 
