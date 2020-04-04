@@ -5,12 +5,11 @@ import backArrow from '../../images/navigation/White arrow.png'
 
 const Header = (props) =>{
     let header = null;
-    if(props.muscleScreen){
+    if(props.homeSelected){
         header =(
             <div className={classes.header}>
             <header>
-                <img className={classes.logoWithArrow} src={logo} alt="Gym buddy logo"/>
-                <img className={classes.arrow} onClick={props.goHome} src={backArrow} alt="Back arrow" />
+                <img className={classes.logo} src={logo} alt="Gym buddy logo"/>
             </header>
         </div>
         )
@@ -18,7 +17,8 @@ const Header = (props) =>{
         header =(
             <div className={classes.header}>
             <header>
-                <img className={classes.logo} src={logo} alt="Gym buddy logo"/>
+                <img className={classes.logoWithArrow} src={logo} alt="Gym buddy logo"/>
+                <img className={classes.arrow} onClick={props.goHome} src={backArrow} alt="Back arrow" />
             </header>
         </div>
         )

@@ -26,9 +26,24 @@ const Buddy = props =>{
             )
         })
 
-        if(person.muscles.length ===1){
+        if(person.name === "Diana"){
             return(
-            <div className={classes.Buddy}>
+                <div key={index} className={classes.Buddy}>
+                <img src={person.pic} alt={person.name}/>
+                <div className={classes.textBackground}/>
+                <p className={classes.name}>{person.name}</p>
+                <div className={classes.Diana}>
+                {muscles}
+                </div>
+                <h4>Likes</h4>
+                <ul>
+                    {likes}
+                </ul>
+                </div>
+            )
+        }else if(person.muscles.length ===1){
+            return(
+            <div key={index} className={classes.Buddy}>
             <img src={person.pic} alt={person.name}/>
             <div className={classes.textBackground}/>
             <p className={classes.name}>{person.name}</p>
@@ -39,10 +54,68 @@ const Buddy = props =>{
             <ul>
                 {likes}
             </ul>
+            </div>
+                )
+        }else if(person.name === "Barry"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Barry}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
+        }else if(person.name === "Clark"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Clark}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
+        }
+        else if(person.name === "Victor"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Victor}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
+        }else if(person.name === "Mari"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Mari}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
             </div>)
         }else if(person.muscles.length ===2){
             return(
-                <div className={classes.Buddy}>
+                <div key={index} className={classes.Buddy}>
                 <img src={person.pic} alt={person.name}/>
                 <div className={classes.textBackground}/>
                 <p className={classes.name}>{person.name}</p>
@@ -54,9 +127,51 @@ const Buddy = props =>{
                     {likes}
                 </ul>
                 </div>)
+        }else if(person.name === "John"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.John}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
+        }else if(person.name === "Shayerya"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Shayera}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
+        }else if(person.name === "Billy"){
+            return(
+            <div key={index} className={classes.Buddy}>
+            <img src={person.pic} alt={person.name}/>
+            <div className={classes.textBackground}/>
+            <p className={classes.name}>{person.name}</p>
+            <div className={classes.Billy}>
+            {muscles}
+            </div>
+            <h4>Likes</h4>
+            <ul>
+                {likes}
+            </ul>
+            </div>)
         }else if(person.muscles.length === 3){
             return(
-                <div className={classes.Buddy}>
+                <div key={index} className={classes.Buddy}>
                 <img src={person.pic} alt={person.name}/>
                 <div className={classes.textBackground}/>
                 <p className={classes.name}>{person.name}</p>

@@ -317,19 +317,13 @@ class App extends Component {
     })
   }
 
-  findClicked = () =>{
-    this.setState({
-      messageSelected:true,
-    })
-  }
-
   render(){
     let screen = null
     if(this.state.homeSelected){  //If home is selected screen is home
       screen=(
         <div className={classes.app}>
 
-         <Header/>
+        <Header homeSelected={this.state.homeSelected} goHome={this.homeSelected}/>
 
          <Time 
          value={this.state.selectedDate}
@@ -356,7 +350,7 @@ class App extends Component {
     if(this.state.muscleSelected){  //if muscle is selected screen is muscle
       screen=(
         <div className={classes.app}>
-         <Header muscleScreen={this.state.muscleSelected} goHome={this.homeSelected} />
+         <Header homeSelected={this.state.homeSelected} goHome={this.homeSelected}/>
 
          <Muscles muscles={this.state.muscles} 
          chestSelect={this.chestSelected} 
@@ -370,7 +364,7 @@ class App extends Component {
          selected={this.state.selected} 
          checkEmpty={this.state.arrayIsEmpty}
          savePreset={this.savePreset} 
-         findClicked={this.findClicked}/>
+         findClicked={this.messageSelected}/>
 
          <BottomButtons homeTrue={this.state.homeSelected}
          muscleTrue={this.state.muscleSelected} 
@@ -386,7 +380,7 @@ class App extends Component {
     if(this.state.messageSelected){
       screen=(
       <div className={classes.app}>
-      <Header muscleScreen={this.state.muscleSelected} goHome={this.homeSelected} />
+      <Header homeSelected={this.state.homeSelected} goHome={this.homeSelected}/>
 
         <Buddies selected={this.state.selected}/>
 
