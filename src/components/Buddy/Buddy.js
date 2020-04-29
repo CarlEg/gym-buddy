@@ -183,6 +183,8 @@ const Buddy = props =>{
                     {likes}
                 </ul>
                 </div>)
+        }else{
+            return null;
         }
     })
 
